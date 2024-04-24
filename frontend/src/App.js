@@ -432,7 +432,7 @@ function App() {
         </main>
         <footer className="row center">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div className="copyright">e-fashion 2022</div>{' '}
+          <div className="copyright">e-fashion 2023</div>{' '}
         </footer>
       </div>
     </BrowserRouter>

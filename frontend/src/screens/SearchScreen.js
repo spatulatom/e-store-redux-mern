@@ -9,6 +9,8 @@ import Rating from '../components/Rating';
 import { prices, ratings } from '../utils';
 
 export default function SearchScreen(props) {
+
+    // React Router hooks to get URL parameters and navigate programmatically
   const navigate = useNavigate();
   const {
     name = 'all',
@@ -19,6 +21,8 @@ export default function SearchScreen(props) {
     order = 'newest',
     pageNumber = 1,
   } = useParams();
+
+    // Redux hooks to dispatch actions and access the Redux state
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
@@ -29,6 +33,8 @@ export default function SearchScreen(props) {
     error: errorCategories,
     categories,
   } = productCategoryList;
+
+  // Effect hook to fetch products based on the current filters whenever they change
   useEffect(() => {
     dispatch(
       listProducts({
@@ -43,6 +49,8 @@ export default function SearchScreen(props) {
     );
   }, [category, dispatch, max, min, name, order, rating, pageNumber]);
 
+  
+  // Helper function to generate the URL for filters
   const getFilterUrl = (filter) => {
     const filterPage = filter.page || pageNumber;
     const filterCategory = filter.category || category;
